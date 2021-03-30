@@ -76,10 +76,11 @@
 #### 2.1.10 Query Languages
 
 - Language in which user requests information from the database
+- 查询语言可以分为**过程化语言(procedural language)**和**非过程化语言(nonprocedural language)**，在过程化语言中， 用户指导系统对数据库执行一系列操作以计算出所需结果;在非过程化语言中， 用户只需描述所需信息， 而不用给出获取该信息的具体过程
 - Pure languages
-  - Relational Algebra --- the basis of SQL
-  - Tuple Relational Calculus (元组关系演算) 
-  - Domain Relational Calculus --- (域关系演算) QBE
+  - 关系代数(Relational Algebra)是过程化的
+  - 元组关系演算(Tuple Relational Calculus)是非过程化的
+  - 域关系演算(Domain Relational Calculus)是非过程化的12
 - Pure languages form underlying basis of query languages that people use
 
 ### 2.2 Fundamental Relational-Algebra Operations
@@ -106,6 +107,8 @@
 
 ![image-20210314141152682](picture/image-20210314141152682.png)
 
+- *r*和*s*可以是数据库关系或者作为关系代数表达式结果的临时关系
+
 #### 2.2.5 Set Difference Operation Formalization
 
 ![image-20210314141243618](picture/image-20210314141243618.png)
@@ -116,7 +119,7 @@
 
 #### 2.2.7 Composition of Operations
 
-- Can build expressions using **multiple operations**
+- Can build **relational-algebra expressions** using **multiple operations**
 
 #### 2.2.8 Rename Operation
 
@@ -142,15 +145,20 @@
 
 > Note:
 >
-> - r, s必须含有共同属性(名和域都对应相同)
+> - *r*, *s*必须含有共同属性(名和域都对应相同)
 > - 连接二个关系中同名属性值相等的元组
 > - 结果属性是二者属性集的并集, 但消去重名属性
+
+- 自然连接是**可结合的(associative)**
 
 #### 2.3.4 Theta Join Operation Formalization
 
 ![image-20210314153855488](picture/image-20210314153855488.png)
 
 #### 2.3.5 Division Operation Formalization
+
+- Suited to queries that include the phrase “**for all**”
+- In fact, it determines whether a collection contains another collection
 
 ![image-20210314154113004](picture/image-20210314154113004.png)
 
@@ -164,9 +172,9 @@
 
 #### 2.3.8 Summary
 
-- Union, Set difference, Set intersection 为双目、等元运算
-- Cartesian product, Natural join, Division 为双目运算
-- Project, Select 为单运算对象
+- Union, Set difference, Set intersection为双目、等元运算
+- Cartesian product, Natural join, Division为双目运算
+- Project, Selec为单运算对象
 - The priority of operations is as follows
   - Project
   - Select
@@ -177,13 +185,15 @@
 
 ### 2.4 Extended Relational-Algebra Operations
 
-#### 2.4.1 Generalized Projection
+#### 2.4.1 Generalized Projection(广义投影)
 
 ![image-20210314155803902](picture/image-20210314155803902.png)
 
 #### 2.4.2 Aggregate Functions and Operations
 
 ![image-20210314161919275](picture/image-20210314161919275.png)
+
+- 聚合函数输入的汇集中一个值可以出现多次，值出现的顺序无关紧要，这样的汇集称为多重集
 
 - Result of aggregation does not have a name
   - Can use rename operation to give it a name

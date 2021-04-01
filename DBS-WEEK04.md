@@ -48,7 +48,14 @@
 - A subquery is a **select_from_where** expression that is nested within another query
 - A common use of subqueries is to perform tests for **set membership**, **set comparisons**
 
-#### 3.7.1 Set Comparison
+#### 3.7.1 Set Membership
+
+- 连接词**in**测试元组是否是集合中的成员，集合是由**select**子句产生的一组值构成的
+- 连接词**not in**是测试元组是否不是元组中的成员
+
+- **in**和**not in**操作符也能用于枚举集合
+
+#### 3.7.2 Set Comparison
 
 ![image-20210325105122645](picture/image-20210325105122645.png)
 
@@ -60,13 +67,13 @@
 
   ![image-20210325105241220](picture/image-20210325105241220.png)
 
-#### 3.7.2 Test for Empty Relations
+#### 3.7.3 Test for Empty Relations
 
 - The **exists** construct returns the value true if the argument subquery is non-empty
 - **exists** $r\lrarr r\neq \empty$
 - **not exists** $r\lrarr r=\empty$
 
-#### 3.7.3 Test for Absence of Duplicate Tuples
+#### 3.7.4 Test for Absence of Duplicate Tuples
 
 - The **unique** construct tests whether a subquery has any duplicate tuples in its result
 
